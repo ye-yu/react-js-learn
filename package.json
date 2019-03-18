@@ -1,0 +1,22 @@
+{
+  "name": "react-js-learn",
+  "version": "0.0.1",
+  "description": "following online crash course on https://www.youtube.com/watch?v=DLX62G4lc44",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "following online crash course on https://www.youtube.com/watch?v=DLX62G4lc44"
+  },
+  "keywords": [
+    "reactjs",
+    "javascript"
+  ],
+  "author": "ye-yu",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.8.4"
+  }
+}
