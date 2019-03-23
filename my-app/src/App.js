@@ -93,7 +93,15 @@ class App extends Component {
     }
     
     toggleDone(id) {
-        console.log("Changed", id);
+        this.setState(previous => {
+            const currentState = previous.todos.map((item) => {
+                if(item.id === id){
+                    item.done = !item.done;
+                }
+                return item
+            });
+            return currentState;
+        });
     }
     render() {
         return (
