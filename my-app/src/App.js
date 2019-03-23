@@ -16,12 +16,19 @@ function MainContent() {
     );
 }
 
-function ToDoItem()
+function ToDoItem(props)
 {
     return (
         <div className="todo-item">
             <input type="checkbox" value="Do this 1" /> 
-            <p> Do this 1 </p>
+            <p className={props.todo.done && "todo-done"}> 
+                {props.todo.name} 
+            </p>
+            <p 
+              className="todo-done-message" 
+              style={{ display: !props.todo.done && "none"}}> 
+                Done 
+            </p>
         </div>
     );
 }
@@ -31,9 +38,27 @@ function CheckBoxes()
     return (
         <div className="todo-list">
 
-            <ToDoItem />
-            <ToDoItem />
-            <ToDoItem />
+            <ToDoItem 
+                todo = {{
+                    
+                    name: "Do item 1",
+                    done: false
+                }}
+            />
+            <ToDoItem 
+                todo = {{
+                    
+                    name: "Do item 2",
+                    done: true
+                }}
+            />
+            <ToDoItem 
+                todo = {{
+                    
+                    name: "Do item 3",
+                    done: false
+                }}
+            />
             
         </div>
     );

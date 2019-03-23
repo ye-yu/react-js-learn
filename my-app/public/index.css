@@ -75,3 +75,16 @@ footer {
     align-items     : flex-end;
     padding-bottom  : 20px;
 }
+
+.todo-done {
+    color: #999;
+    text-decoration: line-through;
+}
+
+.todo-done-message {
+    color          : #3E7;
+    display        : flex;
+    text-decoration: none;
+    margin-left    : 15px;
+    font-weight    : bold;
+}
