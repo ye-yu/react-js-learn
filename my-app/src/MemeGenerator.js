@@ -7,13 +7,25 @@ class MemeGenerator extends Component {
             topText   : "",
             bottomText: "",
             imageUsed : "http://i.imgflip.com/1bij.jpg",
-            textHandler: this.textHandler,
-            newImage: this.newImage
+            allImages : []
         };
         this.textHandler = this.textHandler.bind(this);
         this.newImage = this.newImage.bind(this);
     }
     
+    componentDidMount() {
+        fetch("https://api.imgflip.com/get_memes")
+            .then(resp => resp.json())
+            .then(resp => {
+                const {success, data} = resp;
+                console.log(resp);
+                if (success){
+                    this.setState({allImages: data.memes.map((e) => {return e.url;})});                    
+                } else {
+                    this.setState({allImages: ["http://i.imgflip.com/1bij.jpg"]});
+                }
+            });
+    }
     textHandler(ev) {
         const {name, value} = ev;
         if(name !== "topText" && name !== "bottomText")
@@ -22,9 +34,13 @@ class MemeGenerator extends Component {
     }
     
     newImage() {
-        this.setState({imageUsed: "http://i.imgflip.com/1bij.jpg"});
+        const length    = this.state.allImages.length;
+        const index     = Math.floor(Math.random() * length) % length;
+        const imageUsed = this.state.allImages[index];
+        this.setState({imageUsed: imageUsed});
     }
     render() {
+        console.log(this.state.allImages);
         return (
             <div>
                 <div className="header">
@@ -97,10 +113,15 @@ class MemeOutput extends Component {
     
     render() {
         return (
-            <div className="meme-output">
-                <img src = {this.props.data.imageUsed} />
-                <p className="top-text"> {this.props.data.topText} </p>
-                <p className="bottom-text"> {this.props.data.bottomText} </p>
+            <div>
+                <div className="meme-output">
+                    <img src = {this.props.data.imageUsed} alt="meme background"/>
+                    <p className="top-text"> {this.props.data.topText} </p>
+                    <p className="bottom-text"> {this.props.data.bottomText} </p>
+                </div>
+                <div>
+                    <button onClick={(e) => {this.props.newImage(e)}}> Refresh </button>
+                </div>
             </div>
         )
     }

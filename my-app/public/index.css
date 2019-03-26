@@ -176,10 +176,12 @@ footer {
 
 .meme-output p.top-text
 {
-    top: -10%;
+    top: 0%;
+    margin: 0;
 }
 
 .meme-output p.bottom-text
 {
-    bottom: -10%;
+    bottom: 0%;
+    margin: 0;
 }
