@@ -131,3 +131,55 @@ footer {
     height: 1px;
     background-color: #999; 
 }
+
+.meme-output {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    text-transform: uppercase;
+}
+
+.meme-output {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    text-transform: uppercase;
+}
+
+.meme-output img {
+    width: 100%;
+}
+
+.meme-output p {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    word-wrap: break-word;
+	font-family: 
+        Impact, 
+        Haettenschweiler, 
+        Franklin Gothic Bold, 
+        Charcoal, 
+        Helvetica Inserat, 
+        Bitstream Vera Sans Bold, 
+        Arial Black, 
+        sans serif; 
+    font-size: 50px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 700; 
+    color: white;
+    -webkit-text-stroke: 2px black;
+}
+
+.meme-output p.top-text
+{
+    top: -10%;
+}
+
+.meme-output p.bottom-text
+{
+    bottom: -10%;
+}

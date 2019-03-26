@@ -6,10 +6,24 @@ class MemeGenerator extends Component {
         this.state = {
             topText   : "",
             bottomText: "",
-            imageUsed : "http://i.imgflip.com/1bij.jpg"
+            imageUsed : "http://i.imgflip.com/1bij.jpg",
+            textHandler: this.textHandler,
+            newImage: this.newImage
         };
+        this.textHandler = this.textHandler.bind(this);
+        this.newImage = this.newImage.bind(this);
     }
     
+    textHandler(ev) {
+        const {name, value} = ev;
+        if(name !== "topText" && name !== "bottomText")
+            return;
+        this.setState({[name]: value});
+    }
+    
+    newImage() {
+        this.setState({imageUsed: "http://i.imgflip.com/1bij.jpg"});
+    }
     render() {
         return (
             <div>
@@ -17,8 +31,14 @@ class MemeGenerator extends Component {
                     <Header />
                 </div>
                 <div className="meme-canvas">
-                    <FormInput />
-                    <MemeOutput />
+                    <FormInput 
+                        textHandler = {(e) => {this.textHandler(e);}}
+                        data = {this.state}
+                    />
+                    <MemeOutput 
+                        newImage = {this.newImage}
+                        data = {this.state}
+                    />
                 </div>
             </div>
         )
@@ -39,10 +59,13 @@ class FormInput extends Component {
         this.state = {};
     }
     
-    changeHandler(event) {
-        const {name, value} = event;
+    changeHandler(ev)
+    {
+        const {name, value} = ev.target;
         console.log("Name:", name, "Value:", value);
+        this.props.textHandler(ev.target);
     }
+    
     render() {
         return (
             <form className="meme-form">
@@ -50,14 +73,16 @@ class FormInput extends Component {
                     type       = "text"
                     placeholder= "Top Text"
                     name       = "topText"
-                    onChange   = {this.changeHandler}
+                    onChange   = {(e) => this.changeHandler(e)}
+                    value      = {this.props.data.topText}
                 />
                 <hr />
                 <input 
                     type       = "text"
                     placeholder= "Bottom Text"
                     name       = "bottomText"
-                    onChange   = {this.changeHandler}
+                    onChange   = {(e) => this.changeHandler(e)}
+                    value      = {this.props.data.bottomText}
                 />
             </form>
         )
@@ -72,8 +97,10 @@ class MemeOutput extends Component {
     
     render() {
         return (
-            <div>
-            
+            <div className="meme-output">
+                <img src = {this.props.data.imageUsed} />
+                <p className="top-text"> {this.props.data.topText} </p>
+                <p className="bottom-text"> {this.props.data.bottomText} </p>
             </div>
         )
     }
