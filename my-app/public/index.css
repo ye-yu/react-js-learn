@@ -64,7 +64,6 @@ code {
         0 10px 1px  -4px rgba(0, 0,  0,  0.15),
         0 20px 0px -10px #eee,
         0 20px 1px  -9px rgba(0, 0,  0,  0.15);
-    padding         : 30px;
 }
 
 .todo-item {
@@ -106,4 +105,29 @@ footer {
     text-decoration: none;
     margin-left    : 15px;
     font-weight    : bold;
+}
+
+.meme-form input {
+    background-color: #FAFAFA;
+    border: none;
+    color: #111;
+    font-size: 1em;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: normal;
+    width: 80%;
+}
+.meme-form {
+    width: 80%;
+    margin: 8px 0px;
+}
+
+.meme-form hr {
+    margin: 0;
+    border: none;
+    height: 1px;
+    background-color: #999; 
 }

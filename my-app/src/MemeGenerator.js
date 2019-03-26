@@ -52,7 +52,7 @@ class FormInput extends Component {
                     name       = "topText"
                     onChange   = {this.changeHandler}
                 />
-                <br />
+                <hr />
                 <input 
                     type       = "text"
                     placeholder= "Bottom Text"
