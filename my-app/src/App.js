@@ -63,7 +63,13 @@ class Footer extends Component {
     render() {
         return (
             <footer>
-                This is a footer
+                Future Development:
+                <br />
+                <ul>
+                    <li> add todos </li>
+                    <li> remove todos </li>
+                    <li> edit todos </li>
+                </ul>
             </footer>
         );
     }
@@ -100,9 +106,12 @@ class App extends Component {
                 }
                 return item
             });
-            return currentState;
+            return {
+                todos: currentState
+            };
         });
     }
+    
     render() {
         return (
             <div>
